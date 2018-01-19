@@ -16,6 +16,8 @@
 		$tmp_image= $_FILES['image']['tmp_name']; //for uploading
 		$imageSize = $_FILES['image']['size']; //size of file
 
+		$date = date("F, d Y");#F month d day Y year 
+		
 		//validating data
 		if(strlen($firstName)<3)
 		{
@@ -50,29 +52,31 @@
 			$password = md5($password);
 			
 			$imageExt = explode(".",$image);#i=0 will be name 1=1 will be extention
+			
 			$imageExtension = $imageExt[1];
-			$image = rand(0,100000).rand(0,100000).rand(0,100000).time().".".$imageExtension;
 			
-			
-			
-			
-			
-			$insertQuery="INSERT INTO users(firstName,lastName,email,password,image) VALUES('$firstName','$lastName','$email','$password','$image')";
-			if(mysqli_query($con,$insertQuery)) # name of connection and query
+			if($imageExtension == "png"||$imageExtension == "PNG"||$imageExtension == "jpg"||$imageExtension == "JPG")
 			{
-				if(move_uploaded_file($tmp_image,"images/$image"))
+				$image = rand(0,100000).rand(0,100000).rand(0,100000).time().".".$imageExtension;
+				
+				$insertQuery="INSERT INTO users(firstName,lastName,email,password,image,date) VALUES('$firstName','$lastName','$email','$password','$image','$date')";
+				if(mysqli_query($con,$insertQuery)) # name of connection and query
 				{
-					$error="ثبت نام با موفقیت انجام شد";
-				}
-				else
-				{
-					$error="تصویر بارگزاری نشد";
+					if(move_uploaded_file($tmp_image,"images/$image"))
+					{
+						$error="ثبت نام با موفقیت انجام شد";
+					}
+					else
+					{
+						$error="تصویر بارگزاری نشد";
+					}
 				}
 			}
 			else
 			{
-				echo"echtebah";
+				$error = "فرمت فایل انتخاب شده پشتیبانی نمی شود";
 			}
+			
 		}
 		
 		
