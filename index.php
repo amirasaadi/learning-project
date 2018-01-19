@@ -1,5 +1,5 @@
 <?php
-	include("conect.php");
+	include("connect.php");
 	
 	$error="";
 	
@@ -122,7 +122,7 @@
 					<input type="file" name="image" /><br/><br/>
 					
 					
-					<input type="submit" name="submit" />
+					<input type="submit" name="submit" value="ثبت نام"/>
 					
 				</form>
 			</div>
