@@ -1,5 +1,12 @@
 <?php
 	include("connect.php");
+	include("functions.php");
+	
+	if(logged_in())#if logged in go to profile
+	{
+		header("location:profile.php");
+		exit();#for more security not able to read below codes even in seconds
+	}
 	
 	$error="";
 	
