@@ -23,7 +23,11 @@
 		$tmp_image= $_FILES['image']['tmp_name']; //for uploading
 		$imageSize = $_FILES['image']['size']; //size of file
 
+		$conditions = isset($_POST['conditions']);#condition checkbox
+		
 		$date = date("F, d Y");#F month d day Y year 
+		
+		
 		
 		//validating data
 		if(strlen($firstName)<3)
@@ -37,6 +41,10 @@
 		else if(!filter_var($email,FILTER_VALIDATE_EMAIL))
 		{
 			$error = "ایمیل نامعتبر";
+		}
+		else if(email_exists($email, $con))
+		{
+			$error = "این ایمیل در سیستم ثبت شده است";
 		}
 		else if(strlen($password)<5)
 		{
@@ -53,6 +61,10 @@
 		else if($imageSize > 1048576 )
 		{
 			$error = "حداکثر اندازه عکس میتواند یک مگابایت باشد";
+		}
+		else if(!$conditions) #if it not works
+		{
+			$error = "برای ثبت نام باید با تمامی قوانین موافقت کنید";
 		}
 		else
 		{
@@ -128,6 +140,8 @@
 					<label>تصویر پروفایل</label><br/>
 					<input type="file" name="image" /><br/><br/>
 					
+					<input type="checkbox" name="conditions" />
+					<label>با تمامی قوانین و مقررات مکتب خونه موافقم</label><br/><br/>
 					
 					<input type="submit" name="submit" value="ثبت نام"/>
 					
