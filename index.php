@@ -1,10 +1,14 @@
 <?php
 	include("conect.php");
-	if(isset($_POST)) //if submit button clicked
+	
+	$error="";
+	
+	if(isset($_POST['submit'])) //if submit button clicked
 	{
-		$firstName = $_POST['fname'];
-		$lastName = $_POST['lname'];
-		$email = $_POST['email'];
+		
+		$firstName =mysqli_real_escape_string($con,$_POST['fname']);#mysql_real_escape_string for sql enjection attacks
+		$lastName = mysqli_real_escape_string($con,$_POST['lname']);
+		$email = mysqli_real_escape_string($con,$_POST['email']);
 		$password = $_POST['password'];
 		$passwordConfirm = $_POST['passwordConfirm'];
 
@@ -12,6 +16,65 @@
 		$tmp_image= $_FILES['image']['tmp_name']; //for uploading
 		$imageSize = $_FILES['image']['size']; //size of file
 
+		//validating data
+		if(strlen($firstName)<3)
+		{
+			$error= "نام کوتاه";
+		}
+		else if(strlen($lastName)<3)
+		{
+			$error= "نام خانوادگی کوتاه";
+		}
+		else if(!filter_var($email,FILTER_VALIDATE_EMAIL))
+		{
+			$error = "ایمیل نامعتبر";
+		}
+		else if(strlen($password)<5)
+		{
+			$error = "کلمه عبور کوتاه";
+		}
+		else if($password !== $passwordConfirm) # === for case sensetive
+		{
+			$error = "کله های عبور یکسان نیستند ";
+		}
+		else if($image == "")
+		{
+			$error = "لطفا تصویر را بارگزاری نمایید";
+		}
+		else if($imageSize > 1048576 )
+		{
+			$error = "حداکثر اندازه عکس میتواند یک مگابایت باشد";
+		}
+		else
+		{
+			$password = md5($password);
+			
+			$imageExt = explode(".",$image);#i=0 will be name 1=1 will be extention
+			$imageExtension = $imageExt[1];
+			$image = rand(0,100000).rand(0,100000).rand(0,100000).time().".".$imageExtension;
+			
+			
+			
+			
+			
+			$insertQuery="INSERT INTO users(firstName,lastName,email,password,image) VALUES('$firstName','$lastName','$email','$password','$image')";
+			if(mysqli_query($con,$insertQuery)) # name of connection and query
+			{
+				if(move_uploaded_file($tmp_image,"images/$image"))
+				{
+					$error="ثبت نام با موفقیت انجام شد";
+				}
+				else
+				{
+					$error="تصویر بارگزاری نشد";
+				}
+			}
+			else
+			{
+				echo"echtebah";
+			}
+		}
+		
 		
 	}	
 ?>
@@ -26,6 +89,11 @@
 		<link rel="stylesheet" href="css/styles.css"/> 
 	</head>
 	<body>
+	
+		<div id="error">
+			<?php echo $error; ?>
+		</div>
+		
 		<div id="wrapper">
 			
 			<div id="formDiv">
