@@ -20,23 +20,23 @@
 		
 		if(email_exists($email,$con))#farakhani tabe email exits
 		{
-			$result = mysqli_query($con, "SELECT password FROM users WHERE email='$email'");
-			$retrievepassword = mysqli_fetch_assoc($result);
+			$result = mysqli_query($con, "SELECT password FROM users WHERE email='$email'");#get the password
+			$retrievepassword = mysqli_fetch_assoc($result);#because of working with array
 			
 			if(!password_verify($password, $retrievepassword['password']))
 			{
-				$error = "Password is incorrect";
+				$error = "کله عبور نامعتبر";
 			}
 			else
 			{
-				$_SESSION['email'] = $email;
+				$_SESSION['email'] = $email; #for logged in pages
 				
 				if($checkBox == "on")
 				{
 					setcookie("email",$email, time()+3600);
 				}
 				
-				header("location: profile.php");
+				header("location: profile.php");#to move user to profile.php
 			}
 			
 			

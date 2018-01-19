@@ -6,4 +6,6 @@
 		echo "error occurred while connecting to DB".mysqli_connect_errno();
 	}
 	
+	session_start();
+	
 ?>

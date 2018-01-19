@@ -16,9 +16,9 @@
 	}
 	
 	
-	function logged_in()
+	function logged_in() #if the user logged in
 	{
-			if(isset($_SESSION['email']) || isset($_COOKIE['email']))
+			if(isset($_SESSION['email']) || isset($_COOKIE['email']))#if user logged in
 			{
 				return true;
 			}
