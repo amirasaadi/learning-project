@@ -8,7 +8,7 @@
 	?>
 		
 		<a href="changepassword.php">Change Password</a>
-		<a href="logout.php" style="float:right; padding:10px; margin-right:40px; background-color:#eee; color:#333; text-decoration:none;">Logout</a>
+		<a href="logout.php" style="float:right; padding:10px; margin-right:40px; background-color:#eee; color:#333; text-decoration:none;">خروج</a>
 	
 	<?php 
 		
