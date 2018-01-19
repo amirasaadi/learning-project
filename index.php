@@ -1,4 +1,5 @@
 <?php
+	include("conect.php");
 	if(isset($_POST)) //if submit button clicked
 	{
 		$firstName = $_POST['fname'];
@@ -11,7 +12,7 @@
 		$tmp_image= $_FILES['image']['tmp_name']; //for uploading
 		$imageSize = $_FILES['image']['size']; //size of file
 
-		echo $firstName;
+		
 	}	
 ?>
 
