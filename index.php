@@ -13,19 +13,19 @@
 	if(isset($_POST['submit'])) //if submit button clicked
 	{
 		
-		$firstName =mysqli_real_escape_string($con,$_POST['fname']);#mysql_real_escape_string for sql enjection attacks
-		$lastName = mysqli_real_escape_string($con,$_POST['lname']);
-		$email = mysqli_real_escape_string($con,$_POST['email']);
-		$password = $_POST['password'];
+		$firstName  = mysqli_real_escape_string($con,$_POST['fname']);#mysql_real_escape_string for sql enjection attacks
+		$lastName   = mysqli_real_escape_string($con,$_POST['lname']);
+		$email      = mysqli_real_escape_string($con,$_POST['email']);
+		$password   = $_POST['password'];
 		$passwordConfirm = $_POST['passwordConfirm'];
 
-		$image = $_FILES['image']['name']; //second is name of file
-		$tmp_image= $_FILES['image']['tmp_name']; //for uploading
-		$imageSize = $_FILES['image']['size']; //size of file
+		$image      = $_FILES['image']['name']; //second is name of file
+		$tmp_image  = $_FILES['image']['tmp_name']; //for uploading
+		$imageSize  = $_FILES['image']['size']; //size of file
 
 		$conditions = isset($_POST['conditions']);#condition checkbox
 		
-		$date = date("F, d Y");#F month d day Y year 
+		$date       = date("F, d Y");#F month d day Y year 
 		
 		
 		
@@ -122,6 +122,7 @@
 			<div id="menu">
 				<a href="index.php">ثبت نام</a>
 				<a href="login.php">ورود</a>
+				<a href="pageone.html">صحفه نخست</a>
 			</div>
 			
 			<div id="formDiv">

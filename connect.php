@@ -3,7 +3,7 @@
 	
 	if(mysqli_connect_errno())
 	{
-		echo "error occurred while connecting to DB".mysqli_connect_errno();
+		echo "خطا در اتصال به پایگاه داده".mysqli_connect_errno();
 	}
 	
 	session_start();

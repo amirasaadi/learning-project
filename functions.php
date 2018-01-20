@@ -21,6 +21,7 @@
 			if(isset($_SESSION['email']) || isset($_COOKIE['email']))#if user logged in and if logged in before with cookie
 			{
 				return true;
+				echo $_SESSION['email'];
 			}
 			else
 			{

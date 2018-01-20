@@ -58,7 +58,7 @@
 <html>
 	
 	<head>
-		
+		<meta charset="utf-8">
 	<title>ورود کاربر</title>
 	<link rel="stylesheet" href="css/styles.css"  />
 	
@@ -74,6 +74,7 @@
 			<div id="menu">
 				<a href="index.php">ثبت نام</a>
 				<a href="login.php">ورود</a>
+				<a href="pageone.html">صحفه نخست</a>
 			</div>
 			
 			<div id="formDiv">
