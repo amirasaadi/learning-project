@@ -72,7 +72,7 @@
 		<div id="wrapper">
 			
 			<div id="menu">
-				<a href="index.php">عضویت</a>
+				<a href="index.php">ثبت نام</a>
 				<a href="login.php">ورود</a>
 			</div>
 			

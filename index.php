@@ -128,27 +128,27 @@
 				<form method="POST" action="index.php" enctype="multipart/form-data">
 				
 					<label> نام</label><br/>
-					<input type="text" name="fname" required/><br/><br/>
+					<input type="text" name="fname" class="inputFields" required/><br/><br/>
 					
 					<label>نام خانوادگی</label><br/>
-					<input type="text" name="lname" required/><br/><br/>
+					<input type="text" name="lname" class="inputFields" required/><br/><br/>
 					
 					<label> آدرس ایمیل</label><br/>
-					<input type="text" name="email" required/><br/><br/>
+					<input type="text" name="email" class="inputFields" required/><br/><br/>
 					
 					<label>کلمه عبور</label><br/>
-					<input type="password" name="password" required/><br/><br
+					<input type="password" name="password" class="inputFields" required/><br/><br
 					
 					<label>تکرار کلمه عبور</label><br/>
-					<input type="password" name="passwordConfirm" required/><br/><br/> 
+					<input type="password" name="passwordConfirm" class="inputFields" required/><br/><br/> 
 					
 					<label>تصویر پروفایل</label><br/>
-					<input type="file" name="image" /><br/><br/>
+					<input type="file" name="image" id="imageupload"/><br/><br/>
 					
 					<input type="checkbox" name="conditions" />
 					<label>با تمامی قوانین و مقررات مکتب خونه موافقم</label><br/><br/>
 					
-					<input type="submit" name="submit" value="ثبت نام"/>
+					<input type="submit" name="submit" class="theButtons" value="ثبت نام"/>
 					
 				</form>
 			</div>
