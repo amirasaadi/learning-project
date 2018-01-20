@@ -23,7 +23,7 @@
 			$result = mysqli_query($con, "SELECT password FROM users WHERE email='$email'");#get the password
 			$retrievepassword = mysqli_fetch_assoc($result);#because of working with array
 			
-			if(!password_verify($password, $retrievepassword['password']))
+			if(!password_verify($password, $retrievepassword['password'])) #if not verified firs arg raw pass second pass in DB
 			{
 				$error = "کله عبور نامعتبر";
 			}

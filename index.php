@@ -68,7 +68,7 @@
 		}
 		else
 		{
-			$password = md5($password);
+			$password = password_hash($password, PASSWORD_DEFAULT);#hash the password for more security first arg raw pass and second the algorighm
 			
 			$imageExt = explode(".",$image);#i=0 will be name 1=1 will be extention
 			
