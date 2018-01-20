@@ -3,10 +3,10 @@
 	include("connect.php");
 	include("functions.php");
 	
-	if(logged_in())
+	if(logged_in())#if logged in go to profile
 	{
 		header("location:profile.php");
-		exit();
+		exit();#for more security not able to read below codes even in seconds
 	}
 	
 	$error = "";
@@ -16,7 +16,7 @@
 	
 	    $email = mysqli_real_escape_string($con, $_POST['email']);
 	    $password = mysqli_real_escape_string($con, $_POST['password']);
-		$checkBox = isset($_POST['keep']);
+		$checkBox = isset($_POST['keep']);#if check box is on
 		
 		if(email_exists($email,$con))#farakhani tabe email exits
 		{
@@ -31,9 +31,9 @@
 			{
 				$_SESSION['email'] = $email; #for logged in pages
 				
-				if($checkBox == "on")
+				if($checkBox == "on")#if check box is on
 				{
-					setcookie("email",$email, time()+3600);
+					setcookie("email",$email, time()+3600);#email is kind of key Time after this time this cookie will be expired one hour
 				}
 				
 				header("location: profile.php");#to move user to profile.php

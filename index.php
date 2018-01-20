@@ -113,29 +113,34 @@
 	</head>
 	<body>
 	
-		<div id="error">
+		<div id="error"  style=" <?php  if($error !=""){ ?>  display:block; <?php } ?> ">
 			<?php echo $error; ?>
 		</div>
 		
 		<div id="wrapper">
 			
+			<div id="menu">
+				<a href="index.php">ثبت نام</a>
+				<a href="login.php">ورود</a>
+			</div>
+			
 			<div id="formDiv">
 				<form method="POST" action="index.php" enctype="multipart/form-data">
 				
 					<label> نام</label><br/>
-					<input type="text" name="fname" /><br/><br/>
+					<input type="text" name="fname" required/><br/><br/>
 					
 					<label>نام خانوادگی</label><br/>
-					<input type="text" name="lname" /><br/><br/>
+					<input type="text" name="lname" required/><br/><br/>
 					
 					<label> آدرس ایمیل</label><br/>
-					<input type="text" name="email" /><br/><br/>
+					<input type="text" name="email" required/><br/><br/>
 					
 					<label>کلمه عبور</label><br/>
-					<input type="password" name="password" /><br/><br
+					<input type="password" name="password" required/><br/><br
 					
 					<label>تکرار کلمه عبور</label><br/>
-					<input type="password" name="passwordConfirm" /><br/><br/> 
+					<input type="password" name="passwordConfirm" required/><br/><br/> 
 					
 					<label>تصویر پروفایل</label><br/>
 					<input type="file" name="image" /><br/><br/>

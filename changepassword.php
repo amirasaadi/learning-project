@@ -5,27 +5,27 @@
 	
 	$error = "";
 	
-	if(isset($_POST['savepass']))
+	if(isset($_POST['savepass']))#if button clicked
 	{
 		$password = $_POST['password'];
 		$confirmPassword = $_POST['passwordConfirm'];
 		
-		if(strlen($password) < 8)
+		if(strlen($password) < 6)
 		{
-			$error = "Password must be greater than 8 characters";
+			$error = "کلمه عبور کوتاه";
 		}
 		else if($password !== $confirmPassword)
 		{
-			$error = "Password does not match";
+			$error = "کله های عبور یکسان نیستند";
 		}
 		else
 		{
 			$password = password_hash($password,PASSWORD_DEFAULT);
 			
-			$email = $_SESSION['email'];
+			$email = $_SESSION['email']; #to get email from global space called session
 			if(mysqli_query($con, "UPDATE users SET password='$password' WHERE email='$email'"))
 			{
-				$error = "Password changed successfully, <a href='profile.php'>click here</a> to go to the profile";
+				$error = "کلمه عبور با موفقیت تغییر یافت <a href='profile.php'>کلیک کنید</a> برای بازگشت به پروفایل";
 			}
 			
 		}
@@ -36,21 +36,23 @@
 	{
 		
 		
-	?>
-		
+		?>
+			
 		<?php echo $error; ?>
-		<form method="POST" action="changepassword.php">
-				<label>New Password:</label><br/>
-				<input type="password" name="password" /><br/><br/>
-				
-				<label>Re-enter Password:</label><br/>
-				<input type="password" name="passwordConfirm" /><br/><br/>
-				
-		     	<input type="submit" name="savepass" value="save"/><br/><br/>
-</form>
-		
-	<?php
-	}else
+	 	
+			<form method="POST" action="changepassword.php">
+					<label>کلمه عبور جدید</label><br/>
+					<input type="password" name="password" /><br/><br/>
+					
+					<label>تکرار کلمه عبور</label><br/>
+					<input type="password" name="passwordConfirm" /><br/><br/>
+					
+					<input type="submit" name="savepass" value="ذخیره"/><br/><br/>
+			</form>
+			
+		<?php
+	}
+	else
 	{
 		header("location: profile.php");
 	}
